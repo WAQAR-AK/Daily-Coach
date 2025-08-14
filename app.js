@@ -367,7 +367,7 @@ function buildInput() {
 // --- Gemini call ---
 async function callGemini(input) {
   const key = loadKey();
-  if (!key) throw new Error('Please paste and save your Gemini API key.');
+  if (!key) throw new Error('AIzaSyB_3X5j_a0T2NszhiKEPdpM-srnHFlOong');
 
   const endpoint = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=' + encodeURIComponent(key);
   const body = {
