@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Daily Coach — Micro-Habits</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="app-header">
+    <h1>My Daily Coach</h1>
+    <p class="tagline">Tiny tasks. Real progress. Compounding daily.</p>
+  </header>
+
+  <main class="container">
+    <section class="card settings">
+      <h2>Setup</h2>
+      <div class="row">
+        <label>Gemini API Key
+          <input type="password" id="apiKey" placeholder="Paste your key (saved locally)" />
+        </label>
+        <button id="saveKeyBtn">Save Key</button>
+      </div>
+
+      <div class="grid-2">
+        <label>Max daily minutes
+          <input type="number" id="maxMinutes" min="15" max="240" value="90" />
+        </label>
+
+        <label>Difficulty
+          <select id="difficulty">
+            <option value="easy">easy</option>
+            <option value="moderate" selected>moderate</option>
+            <option value="challenging">challenging</option>
+          </select>
+        </label>
+
+        <fieldset class="contexts">
+          <legend>Available contexts</legend>
+          <label><input type="checkbox" class="ctx" value="home" checked />Home</label>
+          <label><input type="checkbox" class="ctx" value="online" checked />Online</label>
+          <label><input type="checkbox" class="ctx" value="outdoor" checked />Outdoor</label>
+        </fieldset>
+
+        <label>Notes for today ( blockers / comments )
+          <input type="text" id="notes" placeholder="e.g., Stuck on KiCad footprints; low energy afternoon" />
+        </label>
+      </div>
+
+      <div class="grid-3">
+        <label>Morning minutes
+          <input type="number" id="mornMin" min="0" value="20" />
+        </label>
+        <label>Afternoon minutes
+          <input type="number" id="aftMin" min="0" value="30" />
+        </label>
+        <label>Evening minutes
+          <input type="number" id="eveMin" min="0" value="40" />
+        </label>
+      </div>
+
+      <div class="grid-3">
+        <label>Mood (valence)
+          <select id="moodValence">
+            <option>low</option>
+            <option selected>neutral</option>
+            <option>high</option>
+          </select>
+        </label>
+        <label>Energy
+          <select id="moodEnergy">
+            <option>low</option>
+            <option selected>medium</option>
+            <option>high</option>
+          </select>
+        </label>
+        <label>Sleep hours
+          <input type="number" id="sleepHours" min="0" max="14" value="7" />
+        </label>
+      </div>
+
+      <div class="row gap">
+        <button id="generateBtn" class="primary">Generate Today's Plan</button>
+        <button id="exportBtn">Export Plan JSON</button>
+        <button id="resetBtn" class="danger">Reset Today</button>
+      </div>
+      <p class="hint">Your data is stored in this browser using localStorage.</p>
+    </section>
+
+    <section class="card summary" id="summaryCard" hidden>
+      <h2>Today <span id="todayDate"></span></h2>
+      <p><strong>Theme:</strong> <span id="summaryTheme"></span></p>
+      <p><strong>Compound note:</strong> <span id="summaryCompound"></span></p>
+      <p><strong>Estimated minutes:</strong> <span id="summaryMinutes"></span></p>
+      <div class="stats">
+        <div class="stat"><div class="label">Tasks</div><div id="statTasks">0</div></div>
+        <div class="stat"><div class="label">Done</div><div id="statDone">0</div></div>
+        <div class="stat"><div class="label">Points</div><div id="statPoints">0</div></div>
+        <div class="stat"><div class="label">Streak</div><div id="statStreak">0</div></div>
+      </div>
+    </section>
+
+    <section class="card" id="tasksCard" hidden>
+      <h2>Tasks</h2>
+      <div id="tasksList" class="tasks"></div>
+    </section>
+
+    <section class="card" id="prayersCard" hidden>
+      <h2>Prayer Checklist</h2>
+      <div id="prayersList" class="prayers"></div>
+      <p class="consistency"><strong>Consistency tip:</strong> <span id="consistencyTip"></span></p>
+    </section>
+
+    <section class="card" id="weeklyCard" hidden>
+      <h2>Weekly Alignment</h2>
+      <ul id="weekFocus"></ul>
+      <p><strong>Friday review:</strong> <span id="fridayReview"></span></p>
+      <p><strong>Sunday planning:</strong> <span id="sundayPlanning"></span></p>
+    </section>
+
+    <section class="card" id="historyCard">
+      <h2>Last 7 Days</h2>
+      <div id="chart" class="chart"></div>
+      <div id="historyList"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <small>Built for you. Your API key never leaves your device unless you call Gemini.</small>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+/* Minimal, mobile-first UI */
+:root {
+  --bg: #0f1220;
+  --card: #171a2e;
+  --text: #e6e8ff;
+  --muted: #a6a9d6;
+  --accent: #7c8cf8;
+  --accent-2: #19b698;
+  --danger: #e35d6a;
+  --ok: #50d890;
+  --shadow: rgba(0,0,0,0.3);
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif; }
+
+.app-header { padding: 18px 16px; text-align: center; background: linear-gradient(180deg, #131633 0%, #0f1220 100%); border-bottom: 1px solid #222645; position: sticky; top: 0; z-index: 10; }
+.app-header h1 { margin: 0; font-size: 1.6rem; letter-spacing: 0.2px; }
+.app-header .tagline { margin: 6px 0 0; color: var(--muted); font-size: 0.95rem; }
+
+.container { max-width: 980px; margin: 0 auto; padding: 16px; }
+.card {
+  background: var(--card);
+  border: 1px solid #262a4b;
+  box-shadow: 0 8px 20px var(--shadow);
+  border-radius: 16px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+h2 { margin: 0 0 12px; font-size: 1.2rem; }
+
+.row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.row.gap { gap: 12px; }
+.grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
+.grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
+
+label, fieldset { display: flex; flex-direction: column; gap: 6px; color: var(--muted); font-size: 0.95rem; }
+input, select, button, textarea {
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid #2a2e55;
+  background: #12142a;
+  color: var(--text);
+  outline: none;
+}
+input::placeholder { color: #6d719c; }
+button { cursor: pointer; background: #1a1f43; transition: 0.15s ease; }
+button:hover { transform: translateY(-1px); }
+button.primary { background: var(--accent); color: #0c1030; font-weight: 600; }
+button.danger { background: var(--danger); color: #0c1030; font-weight: 600; }
+
+.hint { color: var(--muted); font-size: 0.85rem; }
+
+.stats { display: grid; grid-template-columns: repeat(4,1fr); gap: 8px; margin-top: 12px; }
+.stat { background: #12142a; border: 1px solid #2a2e55; border-radius: 12px; padding: 10px; text-align: center; }
+.stat .label { color: var(--muted); font-size: 0.8rem; }
+.stat div:last-child { font-size: 1.1rem; font-weight: 700; }
+
+.tasks { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+.task {
+  background: #12142a; border: 1px solid #2a2e55; border-radius: 14px; padding: 12px; display: flex; flex-direction: column; gap: 8px;
+}
+.task .title { font-weight: 700; }
+.task .meta { display: flex; gap: 8px; flex-wrap: wrap; color: var(--muted); font-size: 0.85rem; }
+.badge { border: 1px solid #2a2e55; border-radius: 999px; padding: 2px 8px; }
+.badge.cat { background: #1a1f43; }
+.badge.ctx { background: #0f2a26; border-color: #185b54; color: #a6f0df; }
+.badge.diff { background: #2a1f43; border-color: #503186; }
+
+.task .steps { margin: 0; padding-left: 16px; }
+.task .actions { display: flex; gap: 8px; align-items: center; justify-content: space-between; }
+.task .complete { display: flex; align-items: center; gap: 6px; }
+.toggle { appearance: none; width: 20px; height: 20px; border-radius: 5px; border: 1px solid #2a2e55; display: inline-block; position: relative; }
+.toggle:checked { background: var(--ok); border-color: #1c7b56; }
+
+.prayers { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px,1fr)); gap: 10px; }
+.prayer-item { display: flex; justify-content: space-between; align-items: center; background: #12142a; border: 1px solid #2a2e55; border-radius: 12px; padding: 10px; }
+.prayer-item .name { font-weight: 600; }
+.consistency { color: var(--muted); }
+
+.chart { width: 100%; height: 120px; background: #12142a; border: 1px solid #2a2e55; border-radius: 12px; margin-bottom: 8px; position: relative; overflow: hidden; }
+.chart svg { width: 100%; height: 100%; }
+
+.footer { padding: 18px; text-align: center; color: var(--muted); }
