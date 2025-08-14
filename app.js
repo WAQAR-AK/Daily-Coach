@@ -369,7 +369,7 @@ async function callGemini(input) {
   const key = loadKey();
   if (!key) throw new Error('AIzaSyB_3X5j_a0T2NszhiKEPdpM-srnHFlOong');
 
-  const endpoint = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=' + encodeURIComponent(key);
+  const endpoint = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=' + encodeURIComponent(key);
   const body = {
     systemInstruction: { role: 'system', parts: [{ text: MASTER_PROMPT }] },
     contents: [{ role: 'user', parts: [{ text: JSON.stringify(input) }] }],
